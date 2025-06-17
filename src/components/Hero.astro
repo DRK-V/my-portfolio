@@ -1,0 +1,73 @@
+---
+---
+
+<section class="min-h-screen flex items-center justify-center relative overflow-hidden bg-background transition-colors duration-300">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 bg-grid opacity-20"></div>
+  
+  <!-- Floating Elements -->
+  <div class="absolute top-20 left-20 w-20 h-20 bg-cyan-500/20 rounded-full blur-xl animate-float"></div>
+  <div class="absolute bottom-20 right-20 w-32 h-32 bg-purple-500/20 rounded-full blur-xl animate-float" style="animation-delay: -2s;"></div>
+  <div class="absolute top-1/2 left-10 w-16 h-16 bg-blue-500/20 rounded-full blur-xl animate-float" style="animation-delay: -4s;"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 py-20 text-center relative z-10">
+    <div class="animate-fade-in-up">
+      <h1 class="text-6xl md:text-8xl font-bold mb-6 gradient-text leading-tight">
+        Daniel Arango
+      </h1>
+      <div class="text-2xl md:text-3xl text-muted-foreground mb-4 font-mono">
+        <span class="text-cyan-400">&lt;</span>
+        <span class="typing-animation">Desarrollador Full Stack</span>
+        <span class="text-cyan-400">/&gt;</span>
+      </div>
+      <p class="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+         Desarrollador de Software con 
+        <span class="text-cyan-400 font-semibold">pasión por la innovación</span> y 
+        <span class="text-cyan-400 font-semibold">soluciones tecnológicas</span> que transforman ideas en realidad.
+      </p>
+    </div>
+    
+    <div class="flex flex-col sm:flex-row justify-center gap-6 animate-fade-in-up" style="animation-delay: 0.3s;">
+      <a href="#projects" class="group bg-gradient-to-r from-cyan-500 to-blue-500 text-white dark:text-slate-900 px-8 py-4 rounded-lg text-lg font-semibold hover:from-cyan-600 hover:to-blue-600 dark:hover:from-cyan-300 dark:hover:to-blue-400 transition-all duration-300 transform hover:scale-105 glow">
+        <span class="flex items-center justify-center gap-2">
+          Ver Proyectos
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </span>
+      </a>
+      <a href="#contact" class="group border-2 border-cyan-400 text-cyan-400 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-cyan-400 hover:text-slate-900 dark:hover:bg-cyan-300 dark:hover:text-slate-900 transition-all duration-300 transform hover:scale-105">
+        <span class="flex items-center justify-center gap-2">
+          Contáctame
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div class="w-6 h-10 border-2 border-cyan-400 rounded-full flex justify-center">
+        <div class="w-1 h-3 bg-cyan-400 rounded-full mt-2 animate-pulse"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+
+  .typing-animation {
+    display: inline-block;
+    border-right: 2px solid #06b6d4;
+    animation: blink 1s infinite;
+  }
+</style>

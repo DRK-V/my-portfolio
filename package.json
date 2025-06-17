@@ -1,0 +1,23 @@
+{
+  "name": "curved-centauri",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.1.6",
+    "@astrojs/tailwind": "^5.1.5",
+    "@iconify/react": "^5.1.0",
+    "@sendgrid/mail": "^8.1.4",
+    "animejs": "^3.2.1",
+    "astro": "^5.1.1",
+    "astro-icon": "^1.1.5",
+    "emailjs-com": "^3.2.0",
+    "lucide-react": "^0.469.0",
+    "tailwindcss": "^3.4.17"
+  }
+}

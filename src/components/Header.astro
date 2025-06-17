@@ -1,0 +1,307 @@
+---
+---
+
+<header class="fixed w-full bg-card/80 backdrop-blur-md border-b border-border z-50 transition-colors duration-300">
+  <nav class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="#" class="text-2xl font-bold gradient-text font-mono">
+      &lt;DA/&gt;
+    </a>
+    
+    <div class="flex items-center gap-4">
+      <!-- Theme Toggle Button -->
+      <button 
+        id="themeToggle" 
+        class="p-2 rounded-lg bg-muted hover:bg-border transition-colors duration-200"
+        aria-label="Toggle theme"
+      >
+        <svg class="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path class="sun-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+          <path class="moon-icon hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+        </svg>
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button id="menuBtn" class="lg:hidden flex flex-col justify-center items-center w-10 h-10 bg-muted rounded-lg hover:bg-border transition-colors z-50">
+        <span class="w-6 h-0.5 bg-foreground mb-1 transition-all duration-300 ease-in-out origin-center"></span>
+        <span class="w-6 h-0.5 bg-foreground mb-1 transition-all duration-300 ease-in-out origin-center"></span>
+        <span class="w-6 h-0.5 bg-foreground transition-all duration-300 ease-in-out origin-center"></span>
+      </button>
+    </div>
+    
+    <ul id="navMenu" class="fixed lg:relative top-0 lg:top-0 left-0 lg:left-auto w-full lg:w-auto h-screen lg:h-auto bg-card/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none flex-col lg:flex-row flex gap-8 py-8 lg:py-0 px-4 lg:px-0 -translate-x-full lg:translate-x-0 transition-all duration-300 ease-in-out pointer-events-none lg:pointer-events-auto opacity-0 lg:opacity-100 z-40">
+      <li><a href="#about" class="text-muted-foreground hover:text-cyan-400 transition-colors duration-300 block py-2 lg:py-0 text-lg lg:text-base relative group">
+        Sobre mí
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+      </a></li>
+      <li><a href="#skills" class="text-muted-foreground hover:text-cyan-400 transition-colors duration-300 block py-2 lg:py-0 text-lg lg:text-base relative group">
+        Habilidades
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+      </a></li>
+      <li><a href="#projects" class="text-muted-foreground hover:text-cyan-400 transition-colors duration-300 block py-2 lg:py-0 text-lg lg:text-base relative group">
+        Proyectos
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+      </a></li>
+      <li><a href="#contact" class="text-muted-foreground hover:text-cyan-400 transition-colors duration-300 block py-2 lg:py-0 text-lg lg:text-base relative group">
+        Contacto
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+      </a></li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  /* Mejora del responsive y animación del menú */
+  #navMenu {
+    /* background eliminado para ambos temas */
+    color: #0f172a;
+    transition: background 0.3s, color 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  html[data-theme="dark"] #navMenu,
+  :root[data-theme="dark"] #navMenu {
+    /* background eliminado para ambos temas */
+    color: #fff;
+  }
+  #navMenu.active {
+    color: #0f172a;
+    background: #fff; /* Fondo blanco en tema claro */
+    box-shadow: 0 0 0 100vmax rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  html[data-theme="dark"] #navMenu.active,
+  :root[data-theme="dark"] #navMenu.active {
+    color: #fff;
+    background: #111827; /* Fondo oscuro en tema oscuro */
+    box-shadow: 0 0 0 100vmax rgba(0,0,0,0.5);
+  }
+  #navMenu li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  #navMenu a {
+    width: 100%;
+    text-align: center;
+    color: inherit;
+    transition: color 0.3s;
+    padding: 1rem 0;
+    font-size: 1.25rem;
+  }
+  #navMenu a:hover {
+    color: #06b6d4;
+  }
+  #navMenu a .group-hover\:w-full {
+    background: #06b6d4;
+  }
+  @media (min-width: 1024px) {
+    #navMenu {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      transform: translateX(0) !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      height: auto !important;
+      position: relative !important;
+      /* Mantener el background según el tema, pero quitar la sombra */
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      color: inherit;
+    }
+    #navMenu li {
+      width: auto;
+      justify-content: flex-start;
+    }
+    #navMenu a {
+      width: auto;
+      text-align: left;
+      padding: 0;
+      font-size: 1rem;
+    }
+  }
+  #menuBtn {
+    z-index: 50;
+    background: #fff;
+    border: 1px solid #334155;
+    transition: background 0.3s;
+  }
+  [data-theme="dark"] #menuBtn {
+    background: #111827;
+    border: 1px solid #334155;
+  }
+  #menuBtn span {
+    background: #0f172a !important;
+    transition: background 0.3s;
+  }
+  [data-theme="dark"] #menuBtn span {
+    background: #fff !important;
+  }
+  #menuBtn.active span {
+    background: #0f172a !important;
+  }
+  [data-theme="dark"] #menuBtn.active span {
+    background: #fff !important;
+  }
+  #menuBtn.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  #menuBtn.active span:nth-child(2) {
+    opacity: 0;
+  }
+  #menuBtn.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  @media (min-width: 1024px) {
+    #navMenu {
+      transform: translateX(0) !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      height: auto !important;
+      position: relative !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      color: inherit;
+    }
+    #menuBtn {
+      background: transparent;
+      border: none;
+    }
+    #menuBtn span {
+      background: #0f172a !important;
+    }
+    [data-theme="dark"] #menuBtn span {
+      background: #fff !important;
+    }
+  }
+  body.menu-open {
+    overflow: hidden;
+  }
+  /* Enlaces del menú adaptados al tema */
+  #navMenu a {
+    color: inherit;
+    transition: color 0.3s;
+  }
+  #navMenu a:hover {
+    color: #06b6d4;
+  }
+  #navMenu a .group-hover\:w-full {
+    background: #06b6d4;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const sunIcon = themeToggle?.querySelector('.sun-icon');
+    const moonIcon = themeToggle?.querySelector('.moon-icon');
+    const menuBtn = document.getElementById('menuBtn');
+    const navMenu = document.getElementById('navMenu');
+
+    function updateThemeIcon(theme: string) {
+      if (theme === 'dark') {
+        sunIcon?.classList.add('hidden');
+        moonIcon?.classList.remove('hidden');
+      } else {
+        sunIcon?.classList.remove('hidden');
+        moonIcon?.classList.add('hidden');
+      }
+    }
+
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    updateThemeIcon(currentTheme);
+
+    themeToggle?.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+
+    function closeMenu() {
+      if (!menuBtn || !navMenu) return;
+      menuBtn.classList.remove('active');
+      navMenu.classList.remove('active');
+      document.body.classList.remove('menu-open');
+      const spans = menuBtn.querySelectorAll('span');
+      if (spans.length === 3) {
+        spans[0].style.transform = 'translateY(0) rotate(0)';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'translateY(0) rotate(0)';
+      }
+      navMenu.style.transform = 'translateX(-100%)';
+      navMenu.style.opacity = '0';
+      navMenu.style.pointerEvents = 'none';
+    }
+
+    if (menuBtn && navMenu) {
+      menuBtn.addEventListener('click', () => {
+        menuBtn.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+        const spans = menuBtn.querySelectorAll('span');
+        if (menuBtn.classList.contains('active')) {
+          if (spans.length === 3) {
+            spans[0].style.transform = 'translateY(8px) rotate(45deg)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+          }
+          navMenu.style.transform = 'translateX(0)';
+          navMenu.style.opacity = '1';
+          navMenu.style.pointerEvents = 'auto';
+        } else {
+          closeMenu();
+        }
+      });
+
+      // Cerrar menú al hacer click fuera (solo móvil)
+      document.addEventListener('click', function(e) {
+        if (window.innerWidth < 1024 && navMenu.classList.contains('active')) {
+          const target = e.target as Node;
+          if (!navMenu.contains(target) && !menuBtn.contains(target)) {
+            closeMenu();
+          }
+        }
+      });
+
+      // Cerrar menú al hacer click en un enlace
+      const navLinks = document.querySelectorAll('#navMenu a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function () {
+          closeMenu();
+        });
+      });
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const href = (anchor as HTMLAnchorElement).getAttribute('href');
+        if (!href) return;
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Fix: Safe contains for EventTarget
+    document.addEventListener('click', function(e) {
+      if (window.innerWidth < 1024 && navMenu.classList.contains('active')) {
+        const target = e.target as Node;
+        if (!navMenu.contains(target) && !menuBtn.contains(target)) {
+          closeMenu();
+        }
+      }
+    });
+  });
+</script>

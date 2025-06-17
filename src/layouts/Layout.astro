@@ -1,0 +1,208 @@
+---
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title} | Daniel Arango - Desarrollador de Software</title>
+    <meta name="description" content="Portfolio de Daniel Arango - Técnico en Análisis y Desarrollo de Software">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      // Theme detection and initialization
+      (function() {
+        const getTheme = () => {
+          const stored = localStorage.getItem('theme');
+          if (stored) return stored;
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        };
+        
+        const theme = getTheme();
+        document.documentElement.setAttribute('data-theme', theme);
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+          if (!localStorage.getItem('theme')) {
+            document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+          }
+        });
+      })();
+    </script>
+  </head>
+  <body class="bg-background text-foreground transition-colors duration-300">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    /* Light theme */
+    --color-primary: #0ea5e9;
+    --color-secondary: #06b6d4;
+    --color-accent: #8b5cf6;
+    --color-dark: #0f172a;
+    --color-darker: #020617;
+    
+    --background: 248 250 252;
+    --foreground: 15 23 42;
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
+    --border: 226 232 240;
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
+  }
+
+  [data-theme="dark"] {
+    --background: 2 6 23;
+    --foreground: 241 245 249;
+    --card: 15 23 42;
+    --card-foreground: 241 245 249;
+    --border: 30 41 59;
+    --muted: 30 41 59;
+    --muted-foreground: 148 163 184;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) rgb(var(--background));
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secondary);
+  }
+
+  .bg-background {
+    background-color: rgb(var(--background));
+  }
+
+  .text-foreground {
+    color: rgb(var(--foreground));
+  }
+
+  .bg-card {
+    background-color: rgb(var(--card));
+  }
+
+  .text-card-foreground {
+    color: rgb(var(--card-foreground));
+  }
+
+  .border-border {
+    border-color: rgb(var(--border));
+  }
+
+  .bg-muted {
+    background-color: rgb(var(--muted));
+  }
+
+  .text-muted-foreground {
+    color: rgb(var(--muted-foreground));
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow {
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+  }
+
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(14, 165, 233, 0.2);
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(14, 165, 233, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(14, 165, 233, 0.6); }
+  }
+
+  @keyframes slide-in-right {
+    from { transform: translateX(100px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  @keyframes slide-in-left {
+    from { transform: translateX(-100px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  @keyframes fade-in-up {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.8s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.8s ease-out;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out;
+  }
+
+  .bg-grid {
+    background-image: 
+      linear-gradient(rgba(14, 165, 233, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14, 165, 233, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+</style>

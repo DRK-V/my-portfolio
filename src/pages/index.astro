@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Skills from '../components/Skills.astro';
+import Projects from '../components/Projects.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/footer.astro';
+---
+
+<Layout title="Daniel Arango - Portafolio" description="Portafolio de Daniel Arango, Tecnólogo en Análisis y Desarrollo de Software.">
+  <Header />
+  <main>
+    <Hero />
+    <About />
+    <Skills />
+    <Projects />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  // Intersection Observer for animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-fade-in-up');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Observe elements with animation classes
+  document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('.animate-fade-in-up, .animate-slide-in-left, .animate-slide-in-right');
+    animatedElements.forEach((el) => observer.observe(el));
+  });
+
+  // Parallax effect for floating elements
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.animate-float');
+    
+    parallaxElements.forEach((element) => {
+      const el = element as HTMLElement;
+      const speed = 0.5;
+      const yPos = -(scrolled * speed);
+      el.style.transform = `translateY(${yPos}px)`;
+    });
+  });
+</script>
