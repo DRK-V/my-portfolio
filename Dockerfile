@@ -1,32 +1,29 @@
-# Usar una imagen base oficial de Node.js
+# Imagen base ligera con Node.js
 FROM node:18-alpine
 
-# Establecer el directorio de trabajo dentro del contenedor
+# Crear directorio de trabajo
 WORKDIR /app
 
-# Copiar los archivos necesarios para instalar las dependencias
+# Copiar solo lo necesario para instalar dependencias
 COPY package.json package-lock.json* ./
 
 # Instalar dependencias
 RUN npm install
 
-# Copiar el resto del código de la aplicación
+# Copiar el resto de archivos
 COPY . .
-
-# Instalar Astro y Tailwind como dependencias
-RUN npm install astro@latest @astrojs/tailwind@latest
 
 # Construir la aplicación para producción
 RUN npm run build
 
-# Instalar un servidor estático para servir el build
+# Instalar servidor estático globalmente
 RUN npm install -g serve
 
-# Exponer el puerto (Render asigna el valor de la variable $PORT)
+# Definir el puerto expuesto
 EXPOSE 4321
 
-# Configurar la variable de entorno que Render usará
+# Configurar la variable de entorno del puerto
 ENV PORT=4321
 
-# Comando por defecto para servir el contenido estático generado
-CMD ["sh", "-c", "serve -s dist -l ${PORT:-4321}"]
+# Comando por defecto para iniciar la app
+CMD ["serve", "-s", "dist", "-l", "${PORT}"]
