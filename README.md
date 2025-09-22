@@ -61,7 +61,7 @@ Esto expone el sitio en el puerto `4321`.
 
 ## 🌐 Demo en producción
 
-- [Sitio en Render](https://my-portafolio-v1.onrender.com)
+- [Sitio en Render]()
 
 ## 📦 Dependencias principales
 
@@ -69,13 +69,13 @@ Consulta [`package.json`](package.json) para ver todas las dependencias.
 
 ## 📝 Proyectos destacados
 
-- **Consulta Clima**: Plataforma meteorológica en tiempo real ([Demo](https://front-clima-latest.onrender.com) | [Código](https://github.com/DRK-V/proyecto_clima.git))
+- **Consulta Clima**: Plataforma meteorológica en tiempo real ([Demo]() | [Código](https://github.com/DRK-V/proyecto_clima.git))
 - **Task Manager**: App de gestión de tareas (próximamente)
 - **Portfolio Website**: Este mismo sitio, optimizado para SEO y rendimiento
 
 ## 📬 Contacto
 
-Puedes contactarme a través del formulario del sitio o por email: **daniel7v707@gmail.com**
+Puedes contactarme a través del formulario del sitio o por email: **danielarangohernandez02@gmail.com**
 
 ---
 
